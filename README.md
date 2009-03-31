@@ -45,6 +45,8 @@ See demo.php for more.
 
 ### Etc.
 
-Requirement: PHP 5.x with the PDO extension and PDO SQLite driver
-Author: Mike Cantelon
-License: Gnu Public License (http://www.gnu.org/copyleft/gpl.html)
+*Requires:* PHP 5.x with the PDO extension and PDO SQLite driver
+
+*Author*: Mike Cantelon
+
+*License*: Gnu Public License (http://www.gnu.org/copyleft/gpl.html)
