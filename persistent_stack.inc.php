@@ -65,7 +65,7 @@ class PersistentStack
     }
     else {
 
-      $this->link->execute('DELETE FROM stack');
+      $this->link->query('DELETE FROM stack');
     }
   }
 
