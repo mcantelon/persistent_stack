@@ -17,7 +17,7 @@ class PersistentStack
     // Add data to stack
     $query = $this->link->prepare("INSERT INTO stack (name, data) VALUES (:name, :data)");
     $query->bindParam(':name', $name, PDO::PARAM_STR, 255);
-    $query->bindParam(':data', $data, PDO::PARAM_LOB);
+    $query->bindParam(':data', serialize($data), PDO::PARAM_LOB);
 
     return $query->execute();
   }
@@ -37,7 +37,7 @@ class PersistentStack
       $query->bindParam(':id', $result['id'], PDO::PARAM_INT);
       $query->execute();
 
-      return $result['data'];
+      return unserialize($result['data']);
     }
   }
 
@@ -51,7 +51,7 @@ class PersistentStack
     }
     else {
 
-      return $result['data'];
+      return unserialize($result['data']);
     }
   }
 
@@ -114,18 +114,5 @@ class PersistentStack
     return $query->fetch();
   }
 }
-
-/*
-
-// Usage example:
-$stack = new PersistentStack();
-$stack->push('rick', 'goatlord');
-$stack->push('rick', 1234567890);
-
-print 'Stack size: '. $stack->size() ."\n";
-print 'Retrieved: '. $stack->pop('rick') ."\n";
-print 'Stack size: '. $stack->size() ."\n";
-
-*/
 
 ?>
